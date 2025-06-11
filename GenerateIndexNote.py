@@ -195,7 +195,7 @@ def salvar_em_markdown(notas_organizadas, contagem_por_pasta, total_geral, total
         if contador_hubs:
             f.write("| Hub | Contagem |\n")
             f.write("|------|----------|\n")
-            for hub, quantidade in contador_hubs.most_common(20):  # Mostrar os 20 mais comuns
+            for hub, quantidade in contador_hubs.most_common(100):  # Mostrar os 20 mais comuns
                 f.write(f"| `{hub}` | {quantidade} |\n")
             
             f.write("\n📊 Estatísticas de Hubs:\n")
