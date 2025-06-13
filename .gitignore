@@ -5,5 +5,5 @@
 .anaconda_projects/db/
 .anaconda_projects/db
 
-.__pycache__
+__pycache__/
 
