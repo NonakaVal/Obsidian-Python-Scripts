@@ -1,4 +1,22 @@
-# Manipulação de Arquivos Markdown - Scripts Python
+# My personal Markdown Handler with Python
 
-Este repositório contém scripts Python para manipulação de arquivos Markdown. As funcionalidades incluem a remoção de texto específico, limpeza de cabeçalhos, extração e contagem de propriedades em metadados YAML nos cabeçalhos dos arquivos.
+Python scripts to automate and process Markdown files in batches. Scans directories, reformats sections, cleans up content, and generates reusable patterns.
 
+## 📂 Features
+
+* **Batch Processing**: Run operations across multiple Markdown files.
+* **Reformatting**: Quickly adjust sections, headers, and lists to a standard format.
+* **Pattern Generation**: Create reusable patterns for fast use.
+* **Content Cleanup**: Remove junk and standardize formatting.
+
+## Setup
+
+Clone this repo and install the dependencies:
+
+```bash
+git clone https://github.com/yourusername/markdown-handler-python.git
+cd markdown-handler-python
+pip install -r requirements.txt
+```
+
+- set the Vault path in `config.py`
