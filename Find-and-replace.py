@@ -1,5 +1,12 @@
 import os
+import sys
 from typing import List
+
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from config import MAIN_PATH
+
 
 
 def replace_text_in_md_files(root_dir: str, old_text: str, new_text: str) -> List[str]:
@@ -51,8 +58,11 @@ def print_modified_files_report(modified_files: List[str]) -> None:
 if __name__ == "__main__":
     # Example usage
     modified = replace_text_in_md_files(
-        root_dir="PATH/to/your/notes",  # ← Replace with the correct path
+        root_dir=MAIN_PATH,  # ← Replace with the correct path
         old_text="[[System/HUB/hub-tec]]",
         new_text="[[hub-tec]]"
     )
     print_modified_files_report(modified)
+
+
+    

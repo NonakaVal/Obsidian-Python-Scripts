@@ -4,3 +4,6 @@
 
 .anaconda_projects/db/
 .anaconda_projects/db
+
+.__pycache__
+

@@ -9,6 +9,9 @@ from collections import Counter
 from difflib import SequenceMatcher
 from pathlib import Path
 from datetime import datetime
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from config import MAIN_PATH
 
 class BuscadorSimples:
     def __init__(self, pasta_notas):
@@ -168,7 +171,7 @@ def obter_caminho_arquivo(pasta_base):
             print(f"Arquivo não encontrado: {caminho_completo}. Por favor, tente novamente.")
 
 def main():
-    pasta_notas = r"C:\Users\desktop\Documents\Thoughts"
+    pasta_notas = MAIN_PATH
     buscador = BuscadorSimples(pasta_notas)
     
     print("Buscador de Notas Similares")

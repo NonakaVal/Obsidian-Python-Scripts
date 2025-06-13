@@ -1,4 +1,8 @@
 import os
+import sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from config import MAIN_PATH
 
 def confirm_action(prompt: str) -> bool:
     """Solicita confirmação do usuário."""
@@ -68,7 +72,8 @@ def remove_text_from_markdown(directory: str, target_text: str) -> None:
 
 if __name__ == "__main__":
     # Configurações
-    directory_to_scan = r"C:\Users\nonak\Documents\Thoughts\System\cssSnippets"
+    directory_to_scan = MAIN_PATH
+    
     target_text_to_remove = "↪[_cssSnippetCollection](_cssSnippetCollection.md)"
     
     # Executa a função principal
