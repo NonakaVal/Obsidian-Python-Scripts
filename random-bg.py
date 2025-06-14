@@ -1,4 +1,4 @@
-import requests
+deimport requests
 import random
 import json
 from bs4 import BeautifulSoup
