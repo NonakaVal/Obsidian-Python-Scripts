@@ -1,3 +1,6 @@
+
+.vscode/
+.vscode
 .virtual_documents/
 .ipynb_checkpoints/
 .anaconda_projects/
@@ -7,4 +10,3 @@
 
 __pycache__/
 
-.vscode/
