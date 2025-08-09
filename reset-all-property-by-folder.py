@@ -1,10 +1,10 @@
 import os
 import sys
 
-
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from config import MAIN_PATH
+
 def confirmar_acao(mensagem: str) -> bool:
     """Solicita confirmação do usuário para uma ação."""
     resposta = input(f"{mensagem} (digite 'confirmar' para prosseguir): ").strip().lower()
@@ -54,12 +54,14 @@ def clean_and_update_markdown_notes(directory: str, new_header: str) -> None:
     print("\nOperação concluída!")
 
 if __name__ == "__main__":
-    directory_to_scan = r"C:\Users\desktop\Documents\Thoughts\System\ASSETS\cssSnippets"
+    directory_to_scan = r"C:\Users\desktop\Documents\Thoughts\SELF\19_PHILOSOPHY"
     new_header = """---
+created: "[[2025-06-03]]"
 tags:
-  - cssSnippetCollection 
+  - aboutMe
 HUB:
-  - "[[hub-css]]"
+  - "[[hub-writing]]"
+  - "[[hub-thinking]]"
 ---"""
     
     clean_and_update_markdown_notes(directory_to_scan, new_header)

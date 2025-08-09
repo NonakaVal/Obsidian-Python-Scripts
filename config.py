@@ -1,5 +1,4 @@
 # config.py
 
-MAIN_PATH = r"C:\Users\nonak\Documents\Vauts\Thoughts"
-
+MAIN_PATH = r"/home/nonaka/Obsidian Vaults/Thoughts"
 
