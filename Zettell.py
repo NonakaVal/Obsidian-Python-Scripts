@@ -12,19 +12,21 @@ sys.stdout.reconfigure(encoding='utf-8')
 # ==========================
 
 # Caminho relativo para o arquivo a processar (relativo ao MAIN_PATH)
-RELATIVE_PATH = "ATLAS/02_CONCEPT/obsidian-vim-commands.md"
+RELATIVE_PATH = "+/exemploi.md"
 
 # Prefixo para os nomes dos arquivos gerados
-PREFIXO = "vim-basics-"
+PREFIXO = "py-"
 
 # Template do frontmatter para as novas notas
 TEMPLATE_FRONTMATTER = """---
 tags:
-  - learning
-created: "[[2025-08-09]]"
+  - learning/review
 HUB:
-  - "[[hub-tec]]"
-  - "[[hub-SistemaOperacional]]"
+  - "[[hub-python]]"
+created: "[[2025-09-19]]"
+connections:
+  - "[[pandas-iter]]"
+  - "[[concept-python-contador-e-acumulador]]"
 ---"""
 
 # ==========================

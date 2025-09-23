@@ -4,7 +4,6 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from config import MAIN_PATH
-
 def confirmar_acao(mensagem: str) -> bool:
     """Solicita confirmação do usuário para uma ação."""
     resposta = input(f"{mensagem} (digite 'confirmar' para prosseguir): ").strip().lower()

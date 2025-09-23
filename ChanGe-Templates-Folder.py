@@ -2,7 +2,7 @@ import json
 import os
 
 # Caminho do arquivo de configuração
-file_path = r"/home/nonaka/Documentos/Obsidian Vauts/Thoughts/.obsidian/plugins/templater-obsidian/data.json"
+file_path = r"/home/val/Documentos/Thoughts/.obsidian/plugins/templater-obsidian/data.json"
 
 # Valores de troca
 valores = ["SYSTEM/TEMPLATE", "CODE/05_SNIPPETS"]

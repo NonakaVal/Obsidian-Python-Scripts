@@ -11,7 +11,6 @@ from config import MAIN_PATH
 # Forçar UTF-8 no terminal (Windows especialmente)
 sys.stdout.reconfigure(encoding='utf-8')
 
-
 ################################## Configuração ##################################
 
 # Verify MAIN_PATH exists
@@ -21,6 +20,12 @@ if not os.path.exists(MAIN_PATH):
 caminho_da_pasta = MAIN_PATH
 caminho_arquivo_saida = os.path.join(caminho_da_pasta, "_index_notas.md")
 
+# Palavras-chave para identificar templates
+TEMPLATE_KEYWORDS = ["Templates", "Template", "Ideaverse-Templates"]
+
+def is_template_path(path):
+    """Verifica se o caminho é de template"""
+    return any(keyword in path for keyword in TEMPLATE_KEYWORDS)
 
 ################################## Funções utilitárias ##################################
 
@@ -30,13 +35,11 @@ def formatar_numero(num, decimal_places=1):
     else:
         return f"{num:,.{decimal_places}f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
-
 def sanitize_frontmatter(yaml_text):
     """
-    Substitui placeholders {{...}} por valores seguros no YAML
+    Substitui placeholders {{...}} por valores seguros no YAML (sem aspas)
     """
-    return re.sub(r'\{\{.*?\}\}', '"PLACEHOLDER"', yaml_text)
-
+    return re.sub(r'\{\{.*?\}\}', 'PLACEHOLDER', yaml_text)
 
 ################################## Análise de frontmatter ##################################
 
@@ -46,8 +49,8 @@ def analyze_frontmatter(directory):
     file_count = 0
 
     for root, _, files in os.walk(directory):
-        # Ignorar templates
-        if "Ideaverse-Templates" in root:
+        # Ignorar templates completamente
+        if is_template_path(root):
             continue
 
         for file in files:
@@ -74,13 +77,13 @@ def analyze_frontmatter(directory):
                                     property_stats[prop][str(value)] += 1
                         except yaml.YAMLError as e:
                             print(f"⚠️ Erro ao ler frontmatter em {file_path}: {e}")
+                            continue
 
     return {
         'property_stats': dict(property_stats),
         'property_presence': property_presence,
         'total_files': file_count
     }
-
 
 ################################## Listagem de notas ##################################
 
@@ -89,6 +92,10 @@ def listar_notas_markdown_organizadas(pasta_raiz):
     datas_modificacao = []
 
     for raiz, _, arquivos in os.walk(pasta_raiz):
+        # Ignorar templates completamente
+        if is_template_path(raiz):
+            continue
+            
         caminho_relativo = os.path.relpath(raiz, pasta_raiz)
         if caminho_relativo == '.':
             continue
@@ -105,13 +112,12 @@ def listar_notas_markdown_organizadas(pasta_raiz):
 
     return notas_por_pasta, datas_modificacao
 
-
 ################################## Funções de Hubs ##################################
 
 def extrair_hub(caminho_arquivo):
     try:
         # Ignorar templates
-        if "Ideaverse-Templates" in caminho_arquivo:
+        if is_template_path(caminho_arquivo):
             return []
 
         with open(caminho_arquivo, 'r', encoding='utf-8') as arquivo:
@@ -145,7 +151,7 @@ def contar_hubs(diretorio):
 
     for raiz, _, arquivos in os.walk(diretorio):
         # Ignorar templates
-        if "Ideaverse-Templates" in raiz:
+        if is_template_path(raiz):
             continue
 
         for arquivo in arquivos:
@@ -170,7 +176,6 @@ def contar_hubs(diretorio):
         'com_frontmatter': com_frontmatter,
         'com_hub': com_hub
     }
-
 
 ################################## Gerar Markdown ##################################
 
@@ -242,7 +247,6 @@ def salvar_em_markdown(notas_organizadas, datas_modificacao, frontmatter_data, c
                 f.write(f"- 📄 [{nome_nota}]\n")
 
         f.write("\n---\n")
-
 
 ################################## Execução Principal ##################################
 
